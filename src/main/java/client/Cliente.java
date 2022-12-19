@@ -71,7 +71,8 @@ public class Cliente {
 
                 default -> {
                     System.out.println("Opcion desconocida");
-                    System.exit(1); // Como no se puede trabajar con null, creo que esto es la mejor solucion
+                    //System.exit(1); // Como no se puede trabajar con null
+                    opcion = 4; // Puede que sea una mejor solucion, asi el programa no se cierra solo.
                 }
             }
 
