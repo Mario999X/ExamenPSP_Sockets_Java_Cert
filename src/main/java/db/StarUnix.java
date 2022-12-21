@@ -33,12 +33,23 @@ public class StarUnix {
     }
 
     public List<Nave> getAll() {
-        System.out.println("Obteniendo registro completo");
-        return registros.stream().toList();
+        try {
+            lock.lock();
+            System.out.println("Obteniendo registro completo");
+            return registros.stream().toList();
+        } finally {
+            lock.unlock();
+        }
     }
 
     public String getInfoDetallada() {
-        System.out.println("Obteniendo misiles | Recuento de naves");
-        return "Total naves: " + registros.size() + " |Total misiles: " + misiles;
+        try {
+            lock.lock();
+            System.out.println("Obteniendo misiles | Recuento de naves");
+            return "Total naves: " + registros.size() + " |Total misiles: " + misiles;
+        } finally {
+            lock.unlock();
+        }
+
     }
 }
